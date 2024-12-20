@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Kashapov.Lk_Page"
+             Title="Lk_Page">
+    <Grid Padding="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="150"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <!-- Имя пользователя -->
+        <HorizontalStackLayout VerticalOptions="Center">
+            <Label Text="Аккаунт: " FontSize="24" HorizontalOptions="Center" />
+            <Label x:Name="UserNameLabel"  FontSize="24" HorizontalOptions="Center" />
+        </HorizontalStackLayout>
+        <ImageButton Grid.Row="3" Grid.Column="0" Source="home.png" Clicked="ImageButton_Clicked_1"></ImageButton>
+        <ImageButton Grid.Row="3" Grid.Column="1" Source="cart.svg" Clicked="ImageButton_Clicked"></ImageButton>
+        <ImageButton Grid.Row="3" Grid.Column="2" Source="lk.png" Clicked="ImageButton_Clicked_2"></ImageButton>
+        <Label Text="История заказов" FontSize="24" HorizontalTextAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3"></Label>
+        <Button Text="Выйти из аккунта" Grid.Row="0" Grid.Column="2" VerticalOptions="Center" LineBreakMode="WordWrap" FontSize="24" Clicked="Button_Clicked"></Button>
+        <CollectionView x:Name="OrderCollectionView"
+                        Grid.Row="2"
+                        Grid.ColumnSpan="3"
+                        ItemsSource="{Binding Orders}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Orientation="Vertical" Padding="10">
+                        <HorizontalStackLayout>
+                            <Label Text="Номер заказа: " FontSize="16" />
+                            <Label Text="{Binding OrderID}" FontSize="14" />
+                        </HorizontalStackLayout>
+                        <Label Text="{Binding OrderCost, StringFormat='Цена: {0:C}'}" FontSize="14" />
+                        <Label Text="{Binding OrderDate, StringFormat='Дата: {0:dd.MM.yyyy}'}" FontSize="14" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+    
+</ContentPage>

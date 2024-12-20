@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Kashapov.ItemMain"
+             Title="ItemMain"
+             NavigationPage.HasNavigationBar="False">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="150"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <!-- Верхний блок -->
+        <HorizontalStackLayout Grid.Row="0" VerticalOptions="Center" Spacing="10">
+            <Label Text="Аккаунт:" VerticalOptions="Center" VerticalTextAlignment="Center" FontSize="24"></Label>
+            <Label x:Name="Login_user" HorizontalOptions="Start" HorizontalTextAlignment="Start" FontSize="24"></Label>
+        </HorizontalStackLayout>
+
+        <!-- Список товаров -->
+        <ScrollView Grid.Row="1" Grid.ColumnSpan="3">
+            <ListView x:Name="ProductsListView" ItemsSource="{Binding Products}" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10"  ColumnSpacing="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                 
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Image Source="{Binding ImagePath}" 
+                                       WidthRequest="150" 
+                                       HeightRequest="150"
+                                       VerticalOptions="Center" 
+                                       Grid.Column="0"
+                                       Grid.RowSpan="2"/>
+                                <!-- Название товара -->
+                                <Label Text="{Binding Name}" 
+                                       FontSize="20" 
+                                       VerticalOptions="Center" 
+                                       Grid.Column="1"/>
+
+                                <!-- Цена товара -->
+                                <Label Text="{Binding Price, StringFormat='Цена: {0:C}'}" 
+                                       FontSize="18" 
+                                       VerticalOptions="Center" 
+                                       Grid.Column="1"
+                                       Grid.Row="1"/>
+
+                                <!-- Кнопка добавить в корзину -->
+                                <Button Text="Добавить в корзину" 
+                                        Command="{Binding Source={x:Reference ProductsListView}, Path=BindingContext.AddToCartCommand}"
+                                        CommandParameter="{Binding .}"
+                                        Grid.Column="2" 
+                                        VerticalOptions="Center"
+                                        Grid.RowSpan="2"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+        <ImageButton Grid.Row="2" Grid.Column="0" Source="home.png"></ImageButton>
+        <ImageButton Grid.Row="2" Grid.Column="1" Source="cart.svg" Clicked="ImageButton_Clicked"></ImageButton>
+        <ImageButton Grid.Row="2" Grid.Column="2" Source="lk.png" Clicked="ImageButton_Clicked_1"></ImageButton>
+    </Grid>
+</ContentPage>

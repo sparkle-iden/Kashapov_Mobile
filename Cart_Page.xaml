@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Kashapov.Cart_Page"
+             Title="Корзина"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid Padding="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition Height="150"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <!-- Имя пользователя -->
+        <HorizontalStackLayout VerticalOptions="Center">
+            <Label Text="Аккаунт: " Grid.Row="0" FontSize="24" HorizontalOptions="Center" />
+            <Label x:Name="UserNameLabel" Grid.Row="0" FontSize="24" HorizontalOptions="Center" />
+        </HorizontalStackLayout>
+      
+
+        <!-- Список товаров в корзине -->
+        <CollectionView x:Name="CartItemsCollectionView" Grid.Row="1" Grid.ColumnSpan="3">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Orientation="Horizontal" Padding="5" Spacing="10">
+                        <Image Source="{Binding ProductImage}" 
+                               WidthRequest="150" 
+                               HeightRequest="200"
+                               VerticalOptions="Center" />
+                        <Label Text="{Binding NameProduct}" VerticalOptions="Center" FontSize="24"/>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="X" VerticalOptions="Center" FontSize="24"/>
+                            <Label Text="{Binding CountProduct}" VerticalOptions="Center" FontSize="24" />
+                        </StackLayout>
+                        <Image></Image>
+                        <Button Text="Удалить" HeightRequest="50" FontSize="24" Clicked="Button_Clicked"></Button>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button Text="Заказать" Grid.Row="2" Grid.Column="1" FontSize="24" HeightRequest="80" Clicked="Button_Clicked_1"></Button>
+        <!-- Кнопки навигации -->
+        <ImageButton Grid.Row="3" Grid.Column="0" Source="home.png" Clicked="ImageButton_Clicked_1"></ImageButton>
+        <ImageButton Grid.Row="3" Grid.Column="1" Source="cart.svg" Clicked="ImageButton_Clicked"></ImageButton>
+        <ImageButton Grid.Row="3" Grid.Column="2" Source="lk.png" Clicked="ImageButton_Clicked_2"></ImageButton>
+
+    </Grid>
+
+</ContentPage>
