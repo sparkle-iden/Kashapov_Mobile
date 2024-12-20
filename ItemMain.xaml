@@ -6,9 +6,9 @@
              NavigationPage.HasNavigationBar="False">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="120"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -30,9 +30,9 @@
                         <ViewCell>
                             <Grid Padding="10"  ColumnSpacing="10">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto" />
-                                    <ColumnDefinition Width="auto" />
-                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
                                  
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
@@ -41,14 +41,15 @@
                                 </Grid.RowDefinitions>
 
                                 <Image Source="{Binding ImagePath}" 
-                                       WidthRequest="150" 
+                                       WidthRequest="80" 
                                        HeightRequest="150"
                                        VerticalOptions="Center" 
                                        Grid.Column="0"
                                        Grid.RowSpan="2"/>
                                 <!-- Название товара -->
                                 <Label Text="{Binding Name}" 
-                                       FontSize="20" 
+                                       FontSize="20"
+                                       FontAutoScalingEnabled="True"
                                        VerticalOptions="Center" 
                                        Grid.Column="1"/>
 
@@ -57,7 +58,8 @@
                                        FontSize="18" 
                                        VerticalOptions="Center" 
                                        Grid.Column="1"
-                                       Grid.Row="1"/>
+                                       Grid.Row="1"
+                                        FontAutoScalingEnabled="True"/>
 
                                 <!-- Кнопка добавить в корзину -->
                                 <Button Text="Добавить в корзину" 

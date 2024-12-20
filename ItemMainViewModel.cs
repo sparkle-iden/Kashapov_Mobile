@@ -37,8 +37,8 @@ public class ItemMainViewModel
     {
         return photoNumber switch
         {
-            2 => "image1.png",
-            1 => "image2.png",
+            1 => "image1.png",
+            2 => "image2.png",
             3 => "image3.png",
             _ => "placeholder.png", // Изображение по умолчанию
         };

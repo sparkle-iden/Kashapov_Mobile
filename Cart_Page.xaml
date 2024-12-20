@@ -7,10 +7,10 @@
 
     <Grid Padding="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="150"></RowDefinition>
-            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition Height="45"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -28,23 +28,29 @@
         <CollectionView x:Name="CartItemsCollectionView" Grid.Row="1" Grid.ColumnSpan="3">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout Orientation="Horizontal" Padding="5" Spacing="10">
+                    <Grid  Padding="5" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
                         <Image Source="{Binding ProductImage}" 
-                               WidthRequest="150" 
-                               HeightRequest="200"
-                               VerticalOptions="Center" />
-                        <Label Text="{Binding NameProduct}" VerticalOptions="Center" FontSize="24"/>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="X" VerticalOptions="Center" FontSize="24"/>
-                            <Label Text="{Binding CountProduct}" VerticalOptions="Center" FontSize="24" />
+                               WidthRequest="50" 
+                               HeightRequest="50"
+                               VerticalOptions="Center" 
+                               Grid.Column="0"/>
+                       
+                        <StackLayout Orientation="Horizontal" Grid.Column="1">
+                            <Label Text="{Binding NameProduct}" VerticalOptions="Center" FontSize="16"/>
+                            <Label Text=" X" VerticalOptions="Center" FontSize="16"/>
+                            <Label Text="{Binding CountProduct}" VerticalOptions="Center" FontSize="16" />
                         </StackLayout>
-                        <Image></Image>
-                        <Button Text="Удалить" HeightRequest="50" FontSize="24" Clicked="Button_Clicked"></Button>
-                    </StackLayout>
+                        <Button Text="Удалить" HeightRequest="50" FontSize="16" Clicked="Button_Clicked" Grid.Column="2"></Button>
+                    </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        <Button Text="Заказать" Grid.Row="2" Grid.Column="1" FontSize="24" HeightRequest="80" Clicked="Button_Clicked_1"></Button>
+        <Button Text="Заказать" Grid.Row="2" Grid.ColumnSpan="3" FontSize="20" HeightRequest="45" Clicked="Button_Clicked_1"></Button>
         <!-- Кнопки навигации -->
         <ImageButton Grid.Row="3" Grid.Column="0" Source="home.png" Clicked="ImageButton_Clicked_1"></ImageButton>
         <ImageButton Grid.Row="3" Grid.Column="1" Source="cart.svg" Clicked="ImageButton_Clicked"></ImageButton>

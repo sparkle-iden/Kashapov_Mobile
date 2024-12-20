@@ -5,8 +5,8 @@
              Title="Registr"
               NavigationPage.HasNavigationBar="False">
     <VerticalStackLayout Spacing="20">
-        <Entry x:Name="Login_entry" Placeholder="Введите логин"></Entry>
-        <Entry x:Name="Password_entry" Placeholder="Введите пароль"></Entry>
+        <Entry x:Name="Login_entry" Placeholder="Введите логин" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="18" PlaceholderColor="White"></Entry>
+        <Entry x:Name="Password_entry" Placeholder="Введите пароль" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="18" PlaceholderColor="White"></Entry>
         <Button Text="Зарегестрироваться" x:Name="Registr_Button" Clicked="CounterBtn_Clicked" WidthRequest="250"></Button>
     </VerticalStackLayout>
 </ContentPage>
